@@ -51,7 +51,7 @@ func mkJSON(parentID string) []byte {
 }
 
 func sendJSON(bJSON []byte, rt string) {
-	var url string = "http://localhost:9129/" + rt
+	var url string = "https://walboard.xyz/" + rt
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(bJSON))
 	if err != nil {
 		log.Println(err)

@@ -15,7 +15,7 @@ import (
 // home is displays the main page
 func home(w http.ResponseWriter, r *http.Request) {
 	var v viewData
-	v.Order = "rank"
+	v.Order = "ranked"
 	if len(postDBRank) < 20 {
 		v.Stream = postDBRank[:]
 	} else {
@@ -85,9 +85,8 @@ func getByRanked(w http.ResponseWriter, r *http.Request) {
 		} else {
 			v.Stream = postDBRank[:count]
 		}
-		exeTmpl(w, r, &v, "main.tmpl")
 		// v.Stream = postDBRank[count+(len(postDBRank)-count):]
-		// exeTmpl(w, r, &v, "main.tmpl")
+		exeTmpl(w, r, &v, "main.tmpl")
 	}
 	// var v viewData
 	// v.Order = "ranked"
