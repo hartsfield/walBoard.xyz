@@ -40,8 +40,7 @@ func newPost() {
 
 func mkJSON(parentID string) []byte {
 	b, err := json.Marshal(&post{
-		Title:    "tesonoint",
-		BodyText: "testdowicdowi test",
+		BodyText: "genMessage()",
 		Parent:   parentID,
 	})
 	if err != nil {
@@ -76,4 +75,17 @@ func sendJSON(bJSON []byte, rt string) {
 	if len(rb.ID) > 6 {
 		IDs = append(IDs, rb.ID)
 	}
+}
+
+func genMessage() (message string) {
+	symbols := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	for j := 0; j <= rand.Intn(60)+15; j++ {
+		var word string = ""
+		for i := 0; i <= rand.Intn(15)+2; i++ {
+			s := rand.Intn(len(symbols))
+			word += symbols[s : s+1]
+		}
+		message += " " + word
+	}
+	return
 }
