@@ -40,7 +40,7 @@ func newPost() {
 
 func mkJSON(parentID string) []byte {
 	b, err := json.Marshal(&post{
-		BodyText: "genMessage()",
+		BodyText: genMessage(),
 		Parent:   parentID,
 	})
 	if err != nil {
@@ -79,7 +79,7 @@ func sendJSON(bJSON []byte, rt string) {
 
 func genMessage() (message string) {
 	symbols := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	for j := 0; j <= rand.Intn(60)+15; j++ {
+	for j := 0; j <= rand.Intn(260)+100; j++ {
 		var word string = ""
 		for i := 0; i <= rand.Intn(15)+2; i++ {
 			s := rand.Intn(len(symbols))
