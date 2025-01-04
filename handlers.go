@@ -15,11 +15,11 @@ import (
 // home is displays the main page
 func home(w http.ResponseWriter, r *http.Request) {
 	var v viewData
-	v.Order = "chron"
-	if len(postDBChron) < 20 {
-		v.Stream = postDBChron[:]
+	v.Order = "rank"
+	if len(postDBRank) < 20 {
+		v.Stream = postDBRank[:]
 	} else {
-		v.Stream = postDBChron[:20]
+		v.Stream = postDBRank[:20]
 	}
 	exeTmpl(w, r, &v, "main.tmpl")
 }
@@ -139,7 +139,10 @@ func getByRanked(w http.ResponseWriter, r *http.Request) {
 func viewPost(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(r.RequestURI, "/")
 	var p post
-	rdb.HGetAll(rdx, parts[len(parts)-1]).Scan(&p)
+	err := rdb.HGetAll(rdx, parts[len(parts)-1]).Scan(&p)
+	if err != nil {
+		log.Println(err)
+	}
 	if len(p.Id) == 11 {
 		getAllChidren(&p, "RANK")
 	} else {
@@ -154,17 +157,16 @@ func viewPost(w http.ResponseWriter, r *http.Request) {
 
 // handleForm verifies a users submissions and then adds it to the database.
 func handleForm(w http.ResponseWriter, r *http.Request) {
-	log.Println("hf")
 	data, err := marshalPostData(r)
 	if err != nil {
 		log.Println(err)
 	}
-	log.Println(data)
 	parentExists, err := rdb.Exists(rdx, data.Parent).Result()
 	if err != nil {
 		log.Println(err)
 	}
 
+	log.Println(data, parentExists)
 	if parentExists == 0 && data.Parent != "root" {
 		ajaxResponse(w, map[string]string{
 			"success":   "false",
@@ -198,7 +200,7 @@ func handleForm(w http.ResponseWriter, r *http.Request) {
 	} else {
 		rdb.ZAdd(rdx, "ANON:POSTS:CHRON", redis.Z{Score: float64(time.Now().UnixMilli()), Member: data.Id})
 		rdb.ZAdd(rdx, "ANON:POSTS:RANK", redis.Z{Score: 0, Member: data.Id})
-		popLast()
+		// popLast()
 	}
 	ajaxResponse(w, map[string]string{
 		"success":   "true",

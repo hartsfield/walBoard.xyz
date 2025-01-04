@@ -12,10 +12,8 @@ func init() {
 }
 
 func main() {
-	if len(logFilePath) > 1 {
-		f := setupLogging()
-		defer f.Close()
-	}
+	f := setupLogging()
+	defer f.Close()
 
 	ctx, srv := bolt()
 

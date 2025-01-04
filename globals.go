@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"html/template"
-	"os"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -11,15 +10,14 @@ import (
 
 var (
 	appConf     *config            = readConf()
-	servicePort                    = ":" + appConf.App.Port
-	logFilePath                    = appConf.App.Env["logFilePath"]
+	servicePort string             = ":" + appConf.App.Port
+	logFilePath string             = appConf.App.Env["logFilePath"]
 	templates   *template.Template = template.New("")
 	AppName     string             = appConf.App.Name
-	redisIP                        = os.Getenv("redisIP")
 	rdb                            = redis.NewClient(&redis.Options{
-		Addr:     redisIP + ":6379",
+		Addr:     ":6379",
 		Password: "",
-		DB:       1,
+		DB:       6,
 	})
 	// redis context
 	rdx = context.Background()
