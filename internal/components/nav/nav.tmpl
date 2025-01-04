@@ -4,6 +4,7 @@
         <div class="leftNav">
             <div class="homeButt navButt" onclick="window.location = window.location.origin">WalBoard</div>
         {{if eq .ViewType "post"}}
+            </div>
         {{else}}
             {{if eq .Order "chron"}}
                 <div class="navButt popular" onclick="getStream('ranked')">Rank</div>
@@ -11,8 +12,8 @@
                 <div class="navButt newest" onclick="getStream('chron')">New</div>
             {{end}}
             <div class="newPost navButt" onclick="togglePostForm()" id="newPostButt">Post</div>
+            </div>
         {{end}}
-        </div>
     </div>
 </div>
 <style>{{ template "nav.css" }}</style>
