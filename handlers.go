@@ -66,7 +66,13 @@ func getByChron(w http.ResponseWriter, r *http.Request) {
 		ajaxRes := pageInOrder(postDBChron, r, count, &v)
 		ajaxResponse(w, ajaxRes)
 	} else {
-		v.Stream = postDBChron[count+(len(postDBChron)-count):]
+		if len(postDBChron) < count {
+			v.Stream = postDBChron[:]
+		} else {
+			v.Stream = postDBChron[:count]
+		}
+
+		// v.Stream = postDBChron[count+(len(postDBChron)-count):]
 		exeTmpl(w, r, &v, "main.tmpl")
 	}
 }
