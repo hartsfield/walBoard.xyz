@@ -1,0 +1,39 @@
+{{ define "stream.css" }}
+.post {
+    box-shadow: 4px 5px 1px #ddcb4e;
+    margin: 1.5em 0;
+    /* margin: 0.5em 0; */
+    border-radius: 0.3em;
+    background: #fffff9;
+    /* border: 1px solid #eaeaea; */
+    border: 1px solid #7dae93;
+    font-weight: 400;
+    {{ if eq .ViewType "post" }}
+    padding: 0.5em 0em 0.5em 1em;
+    {{else}}
+    padding: 0.5em 1em 0.5em 1em;
+    {{end}}
+}
+.post-reply {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.body-outer {
+    cursor: pointer;
+    margin: 0.5em 1em 0.8em 0;
+    text-align: justify;
+    /* color: #17404d; */
+    color: #ae8100;
+    font-size: 0.9em;
+}
+.timestamp {
+    color: #cb3fa8;
+    width: fit-content;
+    font-family: monospace;
+}
+.cCount {
+    color: #a65000;
+    font-family: monospace;
+}
+{{end}}

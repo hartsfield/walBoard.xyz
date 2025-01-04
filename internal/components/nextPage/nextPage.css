@@ -1,0 +1,24 @@
+{{ define "nextPage.css" }}
+#nextPage {
+    text-align: center;
+    font-size: 5em;
+    animation: 2s ease-out rotater infinite;
+}
+@keyframes rotater {
+    14% {color: #8d561f;}
+    32% {color:  #e1bb2b;}
+    50% {color: lightyellow;}
+    70% {color:  #e1bb2b;}
+    86% {color: #8d561f;}
+    100% {transform: rotate(360deg);}
+}
+.nextPage-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 5em;
+    padding-bottom: 5em;
+    border-bottom: 1em solid #8d561f;
+}
+{{end}}

@@ -1,0 +1,22 @@
+{
+    "app": {
+        "name": "walboard",
+        "command": "walboard",
+        "domain_name": "walboard.xyz",
+        "port": "9129",
+        "tls_enabled": true,
+        "alertsOn": true,
+        "env": {"logFilePath": "./log.txt"},
+        "version": "0.1",
+        "repo": "https://github.com/hartsfield/walboard.xyz"
+    },
+    "gcloud": {
+        "command": "gcloud",
+        "zone": "us-central1-a",
+        "project": "mysterygift",
+        "proxy_home": "/home/john/bp/",
+        "livedir": "/home/john/live/",
+        "user": "john",
+        "instance": "main"
+    }
+}

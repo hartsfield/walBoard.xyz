@@ -1,0 +1,2 @@
+{{ define "banner.js" }}
+{{end}}

@@ -1,0 +1,24 @@
+{{ define "postHead.tmpl" }}
+<div class="section-outer postHead-outer section-postHead" id="section-postHead">
+    <div class="postHead">
+        <div class="postHead-inner">
+            <div class="viewThread" onclick="window.location = window.location.origin + '/post/{{ .Id }}'"> link </div>
+            <div class="show-reply" onclick="toggleReplyForm({{.Id}})">reply</div>
+        </div>
+    </div>
+</div>
+<style>{{ template "postHead.css" }}</style>
+<script>{{ template "postHead.js"}}</script>
+{{end}}
+
+{{ define "rootHead.tmpl" }}
+<div class="section-outer rootHead-outer section-rootHead" id="section-rootHead">
+    <div class="postHead">
+        <div class="postHead-inner">
+            <div class="postID" onclick="window.location = window.location.origin + '/post/{{ .Id }}'">ID: <div class="id-color">{{ .Id }}</div></div>
+            <div class="viewThread viewThreadRoot" onclick="window.location = window.location.origin + '/post/{{ .Id }}'"> link </div>
+        </div>
+    </div>
+</div>
+<style>{{ template "postHead.css" }}</style>
+{{end}}

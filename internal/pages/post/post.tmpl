@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+  {{template "head" . }} 
+  <body>
+    {{template "banner.tmpl" . }}
+    {{template "nav.tmpl" . }}
+    {{template "stream.tmpl" . }}
+    <div class="section-outer nextPage-outer section-nextPage" id="section-nextPage">
+      <div class="nextPage-inner">
+        <div id="nextPage">☯</div>
+      </div>
+      <style>{{ template "nextPage.css" }}</style>
+    </div>
+  </body>
+</html>

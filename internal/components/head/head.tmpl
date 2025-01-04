@@ -1,0 +1,11 @@
+{{ define "head" }}
+  <head>
+    <title>{{ .PageTitle }}</title>
+    <link rel="shortcut icon" type="image/jpg" href="/public/media/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>{{ template "shared_css" . }}</style>
+    <script>{{ template "shared_js" . }}</script>
+  </head>
+{{ end }}
+
+

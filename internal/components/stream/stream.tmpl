@@ -1,0 +1,15 @@
+{{ define "stream.tmpl" }}
+<div class="section-outer stream-outer section-stream" id="section-stream">
+    <div id="postsWrapper">
+        {{ range $key, $value :=  .Stream }}
+        {{if eq $.ViewType "post"}}
+        {{template "repliesView.tmpl" $value}}
+        {{else}}
+        {{template "postElement.tmpl" $value}}
+        {{end}}
+        {{end}}
+    </div>
+</div>
+<style>{{ template "stream.css" . }}</style>
+<script>{{ template "stream.js"}}</script>
+{{end}}

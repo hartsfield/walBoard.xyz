@@ -1,0 +1,66 @@
+{{define "postElement.tmpl"}}
+<div class="section-outer postElement-outer section-postElement" id="section-postElement">
+    <div class="post" id="post_{{.Id}}">
+        {{ template "rootHead.tmpl" . }}
+        <div class="body-outer" onclick="window.location = window.location.origin + '/post/{{ .Id }}'">
+            <div class="bodytext">{{ .BodyText }}</div>
+        </div>
+        <div class="timestamp-outer">
+            <div class="timestamp">{{ .FTS }}</div>
+            <div class="cCount">{{ .ChildCount }} replies</div>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{ define "repliesView.tmpl" }}
+<div class="section-outer postElement-outer section-postElement" id="section-postElement">
+    <div class="post" id="post_{{.Id}}">
+        <div class="timestamp-outer">
+            <div class="timestamp">{{ .FTS }}</div>
+        </div>
+        <div class="body-outer" onclick="window.location = window.location.origin + '/post/{{ .Id }}'">
+            <div class="bodytext">{{ .BodyText }}</div>
+        </div>
+        {{ template "postHead.tmpl" . }}
+        <div class="reply-form" id="reply-form_{{.Id}}">
+            <form class="mainForm">
+                <textarea class="postBody" id="body_{{.Id}}" placeholder="post something..."></textarea>
+            </form>
+            <div id="errorField_{{.Id}}"></div>
+            <div class="submitButt" onclick="submitReply({{.Id}})">post</div>
+        </div>
+        {{ template "replies.tmpl" .Children }}
+    </div>
+</div>
+<style>{{ template "postElement.css" }}</style>
+<script>{{ template "postElement.js"}}</script>
+{{end}}
+
+{{ define "replies.tmpl" }}
+<div class="section-outer replies-outer section-replies" id="section-replies">
+    {{ range $k, $value :=  . }}
+    <div class="post post-reply" id="post_{{.Id}}">
+        <div class="timestamp-outer">
+            <div class="timestamp">{{ .FTS }}</div>
+            <div class="collapseButt" id="collapseButt_{{.Id}}" onclick="collapsePost({{.Id}})">[-]</div>
+        </div>
+        <div id="collapsable_{{.Id}}" style="display: block;">
+            <div class="body-outer" onclick="window.location = window.location.origin + '/post/{{ .Id }}'">
+                <div class="bodytext">{{ $value.BodyText }}</div>
+            </div>
+            {{ template "postHead.tmpl" $value }}
+            <div class="reply-form" id="reply-form_{{$value.Id}}">
+                <form class="mainForm">
+                    <textarea class="postBody" id="body_{{$value.Id}}" placeholder="post something..."></textarea>
+                </form>
+                <div id="errorField_{{$value.Id}}"></div>
+                <div class="submitButt" onclick="submitReply({{$value.Id}})">post</div>
+            </div>
+            {{ template "replies.tmpl" $value.Children }}
+        </div>
+    </div>
+    {{end}}
+</div>
+<style>{{ template "postElement.css" }}</style>
+{{end}}

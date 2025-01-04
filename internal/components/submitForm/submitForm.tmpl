@@ -1,0 +1,11 @@
+{{ define "submitForm.tmpl" }}
+<div class="section-outer submitForm-outer section-submitForm" id="section-submitForm">
+    <form class="mainForm">
+        <textarea class="body" id="body" onkeyup="testText()" placeholder="post something..."></textarea>
+    </form>
+    <div id="errorField"></div>
+    <div class="submitButt" onclick="submitPost()">post</div>
+</div>
+<style>{{ template "submitForm.css" }}</style>
+<script>{{ template "submitForm.js"}}</script>
+{{end}}

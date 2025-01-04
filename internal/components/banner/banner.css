@@ -1,0 +1,14 @@
+{{ define "banner.css" }}
+.banner-outer {
+    padding: 0.5em;
+    width: 20em;
+    text-align: center;
+    position: fixed;
+    transform: rotate(-45deg);
+    right: -8.5em;
+    bottom: 1em;
+    font-weight: 900;
+    background: #709624ad;
+    color: #ffffff;
+}
+{{end}}

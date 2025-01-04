@@ -1,0 +1,55 @@
+{{ define "postHead.css" }}
+.postID {
+    cursor: pointer;
+}
+.collapseButt {
+    margin-right: 1em;
+}
+.timestamp-outer {
+    display: flex;
+    font-size: 0.7em;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.postHead-inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.show-reply {
+    cursor: pointer;
+    border-radius: 0.2em;
+    padding: 0.2em;
+    margin: 0 2em;
+    color: #618100;
+    text-decoration: underline;
+}
+.viewThread {
+    cursor: pointer;
+    color: #057ba2;
+    text-decoration: underline;
+}
+.postHead {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    font-size: 0.7em;
+    color: #2f4400;
+    font-family: monospace;
+}
+.viewThreadRoot {
+    margin-left: 3em;
+    cursor: pointer;
+    color: #057ba2;
+    text-decoration: underline;
+}
+.id-color {
+    display: inline;
+    color: #709624;
+}
+{{end}}
